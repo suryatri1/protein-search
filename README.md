@@ -36,6 +36,15 @@ snakemake --cores 4
 
 The workflow downloads proteomes once, then runs BLAST + HMM per query protein.
 
+### Example: ermF in *Bacteroides fragilis*
+
+The included `query_proteins/ermF.faa` contains ErmF (erythromycin resistance rRNA methyltransferase, [UniProt P10337](https://www.uniprot.org/uniprot/P10337)), a well-characterized accessory gene carried on conjugative transposons in Bacteroidales. To run:
+
+```bash
+# Edit config.yaml to set species: "Bacteroides fragilis"
+snakemake --cores 4
+```
+
 ### Snakemake output
 
 ```
@@ -44,12 +53,10 @@ results/
 │   ├── target_db/all_proteins.faa
 │   ├── target_db/target_db.dmnd
 │   └── manifest.tsv
-├── pucA/                          # Per-query results
+├── ermF/                          # Per-query results
 │   ├── presence_absence.tsv
 │   ├── summary.txt
 │   └── run_log.json
-├── pucB/
-│   └── ...
 └── combined_presence_absence.tsv  # All queries merged
 ```
 
@@ -57,8 +64,8 @@ results/
 
 ```bash
 python protein_survey.py \
-  --query my_protein.faa \
-  --species "Phocaeicola vulgatus" \
+  --query query_proteins/ermF.faa \
+  --species "Bacteroides fragilis" \
   --gtdb-metadata bac120_metadata_r220.tsv.gz \
   --pfam-db Pfam-A.hmm \
   --outdir results/
@@ -122,7 +129,7 @@ A concordance analysis compares BLAST and HMM results. When > 25% of genomes hav
 
 ```
 --query FASTA          Query protein FASTA (required)
---species NAME         Species name, e.g. "Phocaeicola vulgatus" (required)
+--species NAME         Species name, e.g. "Bacteroides fragilis" (required)
 --gtdb-metadata FILE   Path to bac120_metadata_r220.tsv.gz (required)
 --outdir DIR           Output directory (default: protein_survey_results)
 --threads N            CPU threads (default: 8)
@@ -149,7 +156,7 @@ A concordance analysis compares BLAST and HMM results. When > 25% of genomes hav
 
 ## Notes
 
-- **Species names**: Accepts common formats ("Phocaeicola vulgatus", "P. vulgatus"). Suggests corrections if no match is found.
+- **Species names**: Accepts common formats ("Bacteroides fragilis", "Escherichia coli"). Suggests corrections if no match is found.
 - **RefSeq vs GenBank**: Defaults to RefSeq-only for higher assembly quality. Use `--include-genbank` for broader strain coverage.
 - **Large species**: For species with thousands of genomes (e.g., *E. coli*), use `--max-genomes` to sample.
 - **Assembly completeness**: Contig-level assemblies may show lower gene presence due to assembly gaps. The `absent*` flag highlights this.

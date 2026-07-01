@@ -1,4 +1,5 @@
-species: "Phocaeicola vulgatus"
+# Edit these for your species and database paths
+species: "Bacteroides fragilis"
 
 # Pre-downloaded databases (not fetched by the pipeline)
 gtdb_metadata: "bac120_metadata_r220.tsv.gz"
