@@ -1,0 +1,22 @@
+# Databases (too large for git)
+*.tsv.gz
+Pfam-A.hmm
+Pfam-A.hmm.h3*
+
+# Results and intermediate files
+results/
+test_run*/
+*.dmnd
+
+# NCBI downloads
+ncbi_download/
+
+# Snakemake
+.snakemake/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store

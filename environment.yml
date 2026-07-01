@@ -1,0 +1,11 @@
+name: protein_survey
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.9
+  - diamond>=2.0
+  - hmmer>=3.3
+  - ncbi-datasets-cli>=16
+  - snakemake-minimal>=8.0

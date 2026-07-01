@@ -1,0 +1,21 @@
+species: "Phocaeicola vulgatus"
+
+# Pre-downloaded databases (not fetched by the pipeline)
+gtdb_metadata: "bac120_metadata_r220.tsv.gz"
+pfam_db: "Pfam-A.hmm"
+
+# Query proteins — one FASTA per file in this directory
+query_dir: "query_proteins"
+
+# Output
+outdir: "results"
+
+# Search thresholds (Price et al. 2024)
+evalue: 1e-3
+min_pident: 30.0
+min_qcov: 50.0
+
+# Runtime
+threads: 4
+include_genbank: false
+max_genomes: null
